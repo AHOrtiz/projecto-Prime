@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../services/customerservice';
 import { Customer } from '../interfaces/customer';
+import { EmpleadoService } from '../services/empleado';
+import { Empleado } from '../interfaces/empleado';
 
 @Component({
   selector: 'app-tabla',
@@ -9,18 +11,15 @@ import { Customer } from '../interfaces/customer';
 })
 export class TablaComponent implements OnInit {
  
+  constructor(private empleadoService: EmpleadoService) { }
   
-
-
-
-  constructor(private customerService: CustomerService) { }
   first = 0;
 
   rows = 10;
 
-  customers: Customer[] = [];
+  empleados: Empleado[] = [];
   ngOnInit() {
-      this.customerService.getCustomersLarge().then(customers => this.customers = customers);
+      this.empleadoService.getEmpleado().then((empleados:any) => this.empleados = empleados);
   }
 
   next() {
@@ -36,10 +35,10 @@ export class TablaComponent implements OnInit {
   }
 
   isLastPage(): boolean {
-      return this.customers ? this.first === (this.customers.length - this.rows): true;
+      return this.empleados ? this.first === (this.empleados.length - this.rows): true;
   }
 
   isFirstPage(): boolean {
-      return this.customers ? this.first === 0 : true;
+      return this.empleados ? this.first === 0 : true;
   }
 }

@@ -14,6 +14,8 @@ import { CustomerService } from './services/customerservice';
 import {TableModule} from 'primeng/table';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import { HttpClientModule } from '@angular/common/http';
+import { EmpleadoService } from './services/empleado';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +36,7 @@ import { HttpClientModule } from '@angular/common/http';
     ScrollingModule,
     HttpClientModule
   ],
-  providers: [CustomerService],  
+  providers: [CustomerService,EmpleadoService],  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

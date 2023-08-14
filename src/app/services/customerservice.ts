@@ -22,10 +22,36 @@ export class CustomerService {
     }
 
     getCustomersLarge() {
-        return this.http.get<any>('assets/customers-large.json')
-            .toPromise()
-            .then(res => <Customer[]>res.data)
-            .then(data => { return data; });
+        const clientes :[Customer]=[
+            {
+                id: 1,
+                name: "Prueba",
+                country: {
+                    code:"proeo",
+                    name: "heloi"
+                },
+                company: "Hola",
+                date: "20/02",
+                status:  "activo",
+                activity: 2,
+                representative: {
+                    name:"lñdffdslf"
+                },
+            }
+        ]
+
+        var promise = new Promise((resolve, reject) => {
+            setTimeout(() => {
+              console.log("Async Work Complete");
+              resolve(clientes);
+            }, 1000);
+          });
+          return promise;
+
+        // return this.http.get<any>('assets/customers-large.json')
+        //     .toPromise()
+        //     .then(res => <Customer[]>res.data)
+        //     .then(data => { return data; }); 
     }
 
     getCustomersXLarge() {
